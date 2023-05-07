@@ -4,7 +4,7 @@ import { ref } from 'vue';
 
 const modalActive = ref(null);
 const products = ref(null);
-fetch('https://testapi.jasonwatmore.com/products')
+fetch('http://127.0.0.1:8000/myapi/')
     .then(response => response.json())
     .then(data => products.value = data);
 
