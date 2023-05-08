@@ -4,7 +4,7 @@ import { ref } from 'vue';
 
 const modalActive = ref(null);
 const products = ref(null);
-fetch('http://127.0.0.1:8000/myapi/')
+fetch('http://127.0.0.1:8000/gav/')
     .then(response => response.json())
     .then(data => products.value = data);
 
@@ -22,15 +22,16 @@ defineProps<{
 <template>
   <div class="greetings">
    <h2>HHHH</h2>
+   <p>{{ products }}</p>
    <button @click="toggleModal">Open Modal</button>
   </div>
 
   <h5 class="card-header text-center">Vue 3 fetch data from API</h5>
         <div class="card-body">
             <div v-if="products">
-                <h5>Products</h5>
+                <h5 style="color:red"> {{products.results.count}}</h5>
                 <ul class="mb-0">
-                    <li v-for="product in products" :key="product.id">{{product.name}}</li>
+                    <li v-for="product in products.results" :key="product">{{product.name}}-{{ product.email }}</li>
                 </ul>
             </div>
             <div v-if="!products" class="text-center">
